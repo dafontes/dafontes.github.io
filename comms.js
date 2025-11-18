@@ -43,10 +43,10 @@ function setUIData(data, querySelector) {
 //Clicks on the UI
 document.getElementById("touch_lock").onclick = function () {
   if (this.status == "0") {
-    this.src = "assets/unlock.png";
+    this.src = "unlock.png";
     this.status = "1";
   } else {
-    this.src = "assets/lock.png";
+    this.src = "lock.png";
     this.status = "0";
   }
 };
@@ -390,3 +390,4 @@ function process() {
 
 
 }*/
+

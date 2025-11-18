@@ -1,0 +1,98 @@
+@font-face {
+  font-family: Aeonik; /* set name */
+  src: url(assets/Aeonik.ttf); /* url of the font */
+}
+body {
+  background-color: #f8f9fa;
+  color: #284940;
+  font-family: Aeonik, Arial, Helvetica, sans-serif;
+}
+.container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.container > div {
+  padding: 24px;
+  background-color: white;
+  margin: 15px;
+  border-radius: 12px;
+  line-height: 24px;
+}
+.small {
+  flex: 10%;
+}
+.graph {
+  flex: 60%;
+}
+.big {
+  flex: 20%;
+}
+.title {
+  font-size: 16px;
+  color: #b18cff;
+  font-weight: bold;
+}
+.value {
+  font-size: 32px;
+  font-weight: bold;
+}
+.description {
+  font-size: 12px;
+}
+#myChart {
+  width: 100%;
+  max-height: 300px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  font-size: 18px;
+  font-weight: bold;
+}
+header > p {
+  display: flex;
+  align-items: center;
+}
+header > img {
+  filter: invert();
+  height: 32px;
+}
+select {
+  width: 200px;
+  border: none;
+  outline: none;
+}
+button {
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 18px;
+  min-width: 54px;
+  padding: 0 16px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+button:hover {
+  border-color: #dadce0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
+  color: #202124;
+}
+
+button:focus {
+  border-color: #b18cff;
+  outline: none;
+}
+
+@media (max-width: 800px) {
+  .small,
+  .big {
+    flex: 100% !important;
+  }
+}

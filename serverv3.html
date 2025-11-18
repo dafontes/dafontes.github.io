@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/Moon Logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Moon - Dashboard</title>
+  </head>
+  <body onload="process()">
+    <header>
+      <p style="line-height: 22px">
+        <img src="assets/Moon Logo.png" width="128px" alt="" srcset="" />
+        <a class="description">Dashboard</a>&nbsp;
+        <a class="description" style="color: black" href="index.html">APP</a>
+      </p>
+      <img src="assets/beat_logo.png" class="logo" alt="" />
+    </header>
+    <div class="container">
+      <div class="small">
+        <a class="title">Battery</a><br />
+        <a class="value" id="btt_val">78</a><a class="unit"> %</a><br />
+        <a class="description" id="btt_des">[5.00 V]<br />2 Hour remaning...</a>
+      </div>
+      <div class="small">
+        <a class="title">LED Status</a><br />
+        <a class="value" id="led_val">ON</a><br />
+        <a class="description" id="led_des">Status</a><br />
+        <select name="" id="led_select">
+          <option value="">OFF</option>
+          <option value="">Blink Slow</option>
+          <option value="">Blink Fast</option>
+          <option value="">Fade</option>
+          <option value="">ON</option>
+        </select>
+      </div>
+      <div class="small">
+        <a class="title">Power</a><br />
+        <a class="value" id="power_val">90</a><a class="unit"> %</a><br />
+        <a class="description" id="power_des">[10 W]<br />Light intensity</a
+        ><br />
+        <input type="range" id="power_range" min="0" max="100" value="0" />
+      </div>
+      <div class="small">
+        <a class="title">Servo Motor</a><br />
+        <a class="value" id="servo_val">10</a><a class="unit"> º</a><br />
+        <a class="description" id="servo_des">Servo Motor Angle</a><br />
+        <input type="range" id="servo_range" min="0" max="180" value="0" />
+      </div>
+      <div class="small">
+        <a class="title">Touch Button</a>
+        <img
+          src="assets/lock.png"
+          id="touch_lock"
+          width="16px"
+          alt=""
+          status="0"
+        /><br />
+        <a class="value" id="touch_val">Double Click</a><br />
+        <a class="description" id="touch_des">Action 1</a><br />
+        <button id="touch_btn">Touch</button>
+      </div>
+      <div class="graph">
+        <a class="title">Power Consuption</a><br />
+        <a class="value" id="powerDraw_val">10</a><a class="unit"> w</a><br />
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="big">
+        <a class="title" style="color: #c2ff58" id="conn_status">Connected</a
+        ><br />
+        <a class="title">DeviceID </a
+        ><a class="description" id="deviceId">a01X20BD</a><br />
+        <a class="title">MACaddr </a
+        ><a class="description" id="macAddr"> 00:00:00:00</a><br />
+        <a class="title">FirmVersion </a
+        ><a class="description" id="firmVersion"> v1.0.4 (OUT)</a><br />
+        <a class="title">SSID </a
+        ><a class="description" id="ssid"> Rede Publica</a><br />
+        <a class="title">RSSI </a><a class="description" id="rssi"> -60 dBm</a
+        ><br />
+        <a class="title">IPaddr </a
+        ><input
+          class="description"
+          type="text"
+          value="192.168.57.22"
+          id="ipAddr"
+        /><br />
+        <a class="title">CPUload </a
+        ><a class="description" id="cpuLoad"> 75 %</a><br />
+        <a class="title">RAM </a><a class="description" id="ram"> 10/100 MB</a
+        ><br />
+        <a class="title">Time </a
+        ><a class="description" id="time"> ISO 8601 format</a><br />
+        <a class="title">UPtime </a
+        ><a class="description" id="upTime"> 10h 12m 23s</a><br />
+        <a class="title">LastSync </a
+        ><a class="description" id="lastSync"> 10 ms</a><br />
+        <a class="title">Browser Session </a
+        ><a class="description" id="sessionBrowser"> Active</a><br />
+      </div>
+    </div>
+
+    <script type="text/javascript" src="comms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+    <script>
+      const xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+      const ctx = document.getElementById("myChart");
+      // POWER, BATTERY
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              label: "Power Consumption [W]",
+              data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+              borderColor: "red",
+              pointRadius: 2,
+              tension: 0.4,
+            },
+            {
+              data: [
+                1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000,
+              ],
+              label: "Battery [%]",
+              borderColor: "green",
+              pointRadius: 2,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            legend: { display: true },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

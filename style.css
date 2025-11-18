@@ -1,6 +1,6 @@
 @font-face {
   font-family: Aeonik; /* set name */
-  src: url(assets/Aeonik.ttf); /* url of the font */
+  src: url(Aeonik.ttf); /* url of the font */
 }
 body {
   background-color: #f8f9fa;
@@ -96,3 +96,4 @@ button:focus {
     flex: 100% !important;
   }
 }
+
